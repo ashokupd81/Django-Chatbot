@@ -1,0 +1,32 @@
+<html>
+   {% load static %}
+   <head></head>
+   <link rel="stylesheet" href="{% static '/css/css/clr-ui.css' %}" />
+   <body>
+      <div class="login-wrapper">
+         <form class="login" method="POST">
+            {% csrf_token %}
+            <section class="title">
+               <h3 class="welcome">Welcome to</h3>
+               AI-ChatBot
+            </section>
+            <div class="login-group">
+               <input clrInput {% if otp %}readonly{% endif %} style="margin-bottom: 20px" type="text" name="username" clrInput placeholder="Username" {% if username %} value={{ username }} {% endif %}/>
+               <input clrInput {% if otp %}readonly{% endif %} style="margin-bottom: 20px"  type="password" name="password" clrPassword placeholder="Password" {% if password %} value={{ password }} {% endif %}/>
+               <input clrInput {% if otp %}readonly{% endif %} style="margin-bottom: 20px" type="password" name="confirmpassword" clrPassword placeholder="Confirm Password" {% if confirmpassword %} value={{ confirmpassword }} {% endif %}/>
+               {% if otp %} <input clrInput type="text" name="otp" placeholder="One Time Password"/> {% endif %}
+               {% if messages %}
+               {% for message in messages %}
+               <div style="margin-top: 25px" class="error active">
+                  {{ message }}
+               </div>
+               {% endfor %}
+               {%  endif %}
+               <button type="submit" class="btn btn-primary"> SignUp </button>
+                <a href="{% url 'login' %}" class="signup">Already have an account? <b>Login</b></a>
+            </div>
+         </form>
+      </div>
+      </form>
+   </body>
+</html>

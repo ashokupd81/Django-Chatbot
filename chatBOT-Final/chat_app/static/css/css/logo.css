@@ -1,0 +1,62 @@
+@import "compass/css3";
+
+$device-medium: 992px;
+$brand-color: white;
+$brand-background-color: #0083C1;
+$transition-delay: 0.8s;
+$base-size: 3.2em;
+$logo-size: 2em;
+
+html, body{
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.logo {
+  transition: all $transition-delay;
+  &:hover{
+    transform: rotate(45deg);
+    border-radius: 50%;
+  }
+
+  max-width: $logo-size;
+  border: 2px solid $brand-background-color;
+  text-decoration: none;
+  color: $brand-color;
+  font-weight: 900;
+
+  font-size: 200%;
+  @media (min-width: $device-medium){
+    font-size: 400%;
+  }
+
+  position: relative;
+  display: block;
+  min-width: $base-size;
+  min-height: $base-size;
+  background: $brand-background-color;
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: middle;
+  line-height: $base-size;
+
+  &__twist{
+    font-style: normal;
+    display: inline-block;
+    transform: rotate(-45deg);
+    margin-left: -0.1em;
+    margin-right: -0.05em;
+  }
+
+  &::before{
+    border-radius: 50%;
+    content: '';
+    border: 0.1em solid $brand-color;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+  }
+}
