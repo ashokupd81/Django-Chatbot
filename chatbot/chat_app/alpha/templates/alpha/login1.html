@@ -1,0 +1,35 @@
+<html>
+   {% load static %}
+   <head></head>
+   <link rel="stylesheet" href="{% static '/css/css/clr-ui.css' %}" />
+   <body>
+      <div class="login-wrapper">
+         <form class="login" method="POST">
+            {% csrf_token %}
+            <section class="title">
+               <h3 class="welcome">Welcome to</h3>
+               AI-ChatBot
+            </section>
+            <div class="login-group">
+               <label style="margin-bottom: 20px"><b>Login using given Credentials</b></label>
+               <input style="margin-bottom: 20px" clrInput type="text" name="username" clrInput placeholder="Username/Email"/>
+               <input clrInput type="password" name="password" clrPassword placeholder="Password"/>
+{#               <a href={% url 'forgot' 'change' %} style="margin-left: 65%">Change Password</a>#}
+{#               <a href={% url 'forgot' 'forgot' %} style="margin-left: 65%">Forgot Password?</a>#}
+               {% if messages %}
+                    {% for message in messages %}
+                   {% if message.tags == 'error' %}
+                           <div style="margin-top: 25px" class="error active">
+                              {{ message }}
+                           </div>
+                    {% endif %}
+               {% endfor %}
+               {%  endif %}
+               <button type="submit" class="btn btn-primary"> Login </button>
+              <a href="{% url 'signup' %}" class="signup">Create Account</a>
+            </div>
+         </form>
+      </div>
+      </form>
+   </body>
+</html>
